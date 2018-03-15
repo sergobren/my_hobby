@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <style >
+    
+    body {
+    background-color: LightGray;
+    }
+
+    table#Table  
+
+    th {
+    text-align: center;
+    border: 4px solid black;
+    }
+
+    td {    
+    text-align: center;
+    border: 2px solid black;
+    } 
+
+    .Table {
+    counter-reset: section;  /* Set the serial number counter to 0 */
+    }
+    .Table td.Counter:before {
+    counter-increment: section;  /* Increment the serial number counter */
+    content: counter(section);  /* Display the counter */
+    }
+    
+
+    
+   
+ </style>
+</head>
+
+<body > 
+ <div > 
+
+  <p id="Path" style="text-align: left;" >    
+   <script>
+      document.getElementById("Path").innerHTML = document.URL;
+    </script>
+  <p/>  
+
+ <table class="Table" style="width:100%">
+  <thead>
+  <tr style="text-decoration: underline" >
+     <th> # </th>
+     <th> From </th>
+     <th> Where </th>
+     <th> Distance </th>
+  </tr>
+  </thead>
+
+  <tfoot>
+  <tr>
+     <td/>
+     <td style="background-color: black; color:white;" colspan="2"> <!-- #1 --> </td>  <!-- sum way  --> 
+     <td class="Sum" style="background-color: black; color:white;"></td>
+  </tr>
+  </tfoot>
+
+
+  <tbody>
+<!-- #2 -->
+
+
+<!-- data
+  <tr>
+     <td class="Counter"  ></td>
+     <td  ></td> from 
+     <td  ></td> where
+     <td  ></td> distance
+  </tr>
+-->
+  </tbody>
+
+
+  </table>
+  </div> <!-- end .container -->
+
+
+</body>
+</html>
