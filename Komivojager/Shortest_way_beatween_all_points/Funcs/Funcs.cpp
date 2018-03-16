@@ -10,9 +10,9 @@ const char * root                  ("Map"),
            * size_collect          ("size"),
            * value_diagonal        ("0"),
            * filter_for_filedialog ("*.xml"),
-           * file_suffix           (".xml"),
-           * template_html         ("templates/template_html.html"),
-           * file_data             ("folder_for_printer/temp.html"),
+           * file_xml_suffix       (".xml"),
+           * template_html         ("insert_into_folder_aplication_after_compile/templates/template_html.html"),
+           * file_data             ("insert_into_folder_aplication_after_compile/folder_for_printer/temp.html"),
            * point_1               ("<!-- #1 -->"),
            * point_2               ("<!-- #2 -->");
 
@@ -223,7 +223,7 @@ bool funcs::load_data_from_xml_file(QStandardItemModel & model , QSpinBox & spin
             return false;
 }
 
-QString funcs::name_directory(QWidget * parent,const QString & name_window ,const QString & DirPath,const QString & filter)
+QString funcs::name_directory(QWidget * parent,const QString & name_window ,const QString & DirPath,const QString & filter, const QString & suffix)
 {
     QFileDialog dialog( parent ,name_window, DirPath, filter );
     QStringList list_files;
@@ -242,9 +242,9 @@ QString funcs::name_directory(QWidget * parent,const QString & name_window ,cons
         // revision suffic file if doesnt include append else revision if wrong repeat
           if( info.suffix().isEmpty() )
              {
-              list_files.first().append(  filter  );
+              list_files.first().append(  suffix  );
                 wrong_suffix = false;
-             }else if( !info.suffix().compare(filter,Qt::CaseSensitive))
+             }else if( !info.suffix().compare( suffix,Qt::CaseSensitive))
                  wrong_suffix = true;
           str_return = list_files.first();
          }
@@ -261,10 +261,6 @@ bool funcs::copy_template_html_and_fill_with_data( const QStandardItemModel & mo
 
       if( ! ( template_html.open( QIODevice::ReadOnly) && file_with_way.open( QIODevice::WriteOnly ) ) )
           return false;
-
-
-
-
 
     QTextDocument doc(  QTextStream( &template_html ).readAll() );
 

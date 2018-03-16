@@ -6,7 +6,7 @@ namespace Ui
 {
 
 const int size_table = 4;
-const QString name_gif( "gif/giphy.gif" );
+const QString name_gif( "insert_this_folder_into_folder_application_after_compile/gif/giphy.gif" );
 double size_window_wait_rate_parent = 0.6;
 const char name_window_message_box [] = "Error";
 const char table_isnt_full [] = "Fields_arent_full";
@@ -20,6 +20,7 @@ const char name_progres_dialog[] = "Load File";
 const char name_button_abort_dial_load[] = "Abort";
 const char name_dialog_save[] = "Save";
 const char html_filter_for_dialog [] = "*.html";
+const char html_suffix [] = ".html";
 }
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -120,7 +121,7 @@ void MainWindow::on_search_way_button_clicked()
 void MainWindow::on_actionSave_triggered()
 {
 
-   QString str = funcs::name_directory( this,Ui::name_dialog_save,qApp->applicationDirPath(),const_data::filter_for_filedialog);
+   QString str = funcs::name_directory( this,Ui::name_dialog_save,qApp->applicationDirPath(),const_data::filter_for_filedialog, const_data::file_xml_suffix);
 
    const QStandardItemModel & model =  static_cast<QStandardItemModel&>( *ui->tableView->model());
    bool error_read_model;
@@ -341,7 +342,7 @@ void MainWindow::create_html_file(bool dialog)
 {
     QString str;
     if(dialog)
-      str = funcs::name_directory(this,Ui::name_dialog_save,qApp->applicationDirPath(),Ui::html_filter_for_dialog);
+      str = funcs::name_directory(this,Ui::name_dialog_save,qApp->applicationDirPath(),Ui::html_filter_for_dialog,Ui::html_suffix );
     else
       str = const_data::file_data;
     if(!str.isEmpty())

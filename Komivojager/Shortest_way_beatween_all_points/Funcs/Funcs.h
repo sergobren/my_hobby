@@ -10,6 +10,7 @@ namespace const_data
 extern   const char * file_data;
 extern   const char * filter_for_filedialog;
 extern   const char * name_dialog_save;
+extern   const char * file_xml_suffix;
 }
 
 namespace funcs
@@ -29,7 +30,7 @@ namespace funcs
  // load table from xml fail
  bool load_data_from_xml_file(  QStandardItemModel & , QSpinBox & , QString );
 
- QString name_directory(QWidget * parent,const QString & name_window ,const QString & DirPath,const QString & filter);
+ QString name_directory(QWidget * parent,const QString & name_window ,const QString & DirPath,const QString & filter, const QString & suffix);
 
  bool copy_template_html_and_fill_with_data( const QStandardItemModel & model , const QString &);
 
